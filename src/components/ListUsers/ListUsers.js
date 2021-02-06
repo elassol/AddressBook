@@ -12,7 +12,7 @@ import {
   TextWrapper,
 } from './styles';
 
-const ListUsers = ({ getData, users }) => {
+const ListUsers = ({ getData }) => {
   useEffect(() => {
     console.log('useEffect');
     getData();
@@ -21,9 +21,7 @@ const ListUsers = ({ getData, users }) => {
   return (
     <ListGroup>
       <ListItem>
-        {users.map((el) => (
-          console.log(el)
-        ))}
+
         <AvatarWrapper>avatar</AvatarWrapper>
         <TextWrapper>user.first_name</TextWrapper>
         <TextWrapper>user.last_name</TextWrapper>

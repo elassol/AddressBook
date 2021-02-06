@@ -6,13 +6,14 @@ function getData() {
   // eslint-disable-next-line no-console
   console.log('Fetching remote articles.');
   return fetch('https://reqres.in/api/users')
-    .then((response) => response.json());
+    .then((response) => response.json())
+    .then((data) => data.data);
 }
 
 function* workerSaga() {
   try {
     const payload = yield call(getData);
-    yield put({ type: DATA_LOADED, user: payload });
+    yield put({ type: DATA_LOADED, payload });
     // yield put({ type: DATA_LOADED, payload });
   } catch (error) {
     yield put({ type: API_ERRORED, payload: error });
