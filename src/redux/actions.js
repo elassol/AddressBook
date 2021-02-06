@@ -8,7 +8,6 @@ export function addUser(payload) {
 }
 
 export function getData() {
-  console.log('fire get saga');
   return { type: DATA_REQUESTED };
 }
 

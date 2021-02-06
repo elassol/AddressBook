@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
 
@@ -13,16 +14,16 @@ import {
 
 const ListUsers = ({ getData, users }) => {
   useEffect(() => {
+    console.log('useEffect');
     getData();
   }, [getData]);
-
-  const value = { users };
-  // eslint-disable-next-line no-console
-  console.log(value);
 
   return (
     <ListGroup>
       <ListItem>
+        {users.map((el) => (
+          console.log(el)
+        ))}
         <AvatarWrapper>avatar</AvatarWrapper>
         <TextWrapper>user.first_name</TextWrapper>
         <TextWrapper>user.last_name</TextWrapper>

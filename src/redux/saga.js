@@ -6,17 +6,16 @@ function getData() {
   // eslint-disable-next-line no-console
   console.log('Fetching remote articles.');
   return fetch('https://reqres.in/api/users')
-    .then((response) => response.json())
-    // eslint-disable-next-line no-console
-    .then((data) => console.log(data.data));
+    .then((response) => response.json());
 }
 
 function* workerSaga() {
   try {
     const payload = yield call(getData);
-    yield put({ type: DATA_LOADED, payload });
-  } catch (e) {
-    yield put({ type: API_ERRORED, payload: e });
+    yield put({ type: DATA_LOADED, user: payload });
+    // yield put({ type: DATA_LOADED, payload });
+  } catch (error) {
+    yield put({ type: API_ERRORED, payload: error });
   }
 }
 
