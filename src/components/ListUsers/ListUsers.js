@@ -4,7 +4,7 @@
 
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getData, selectUser } from '../../redux/actions';
+import { getData, selectedUser } from '../../redux/actions';
 import {
   ListGroup,
   ListItem,
@@ -19,11 +19,17 @@ const ListUsers = ({ getData, users }) => {
     getData();
   }, [getData]);
 
+  const selectUserList = (user) => {
+    console.log('click');
+    console.log(user);
+    selectedUser(user);
+  };
+
   return (
     <ListGroup>
 
       {users.map((user) => (
-        <ListItem key={user.id} onClick={selectUser}>
+        <ListItem key={user.id} onClick={() => selectUserList(user)}>
           <AvatarWrapper src={user.avatar} />
           <TextWrapper>
             <NameStyle>

@@ -18,6 +18,8 @@ const rootReducer = (state = initialState, action) => {
   console.log('this is the reducers');
 
   switch (action.type) {
+    case SELECT_USER:
+      return { ...state, selectedUser: action.payload };
     case DATA_REQUESTED:
       return { ...state, error: null, loading: true };
     case DATA_LOADED:
@@ -26,8 +28,6 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state, users: [], error: state.error, loading: false,
       };
-    case SELECT_USER:
-      return { ...state, selectedUser: action.payload };
     default:
       return state;
   }
