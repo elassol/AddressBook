@@ -8,7 +8,7 @@ export function addUser(payload) {
   return { type: ADD_USER, payload };
 }
 
-export function selectedUser(payload) {
+export function getUser(payload) {
   return { type: SELECT_USER, payload };
 }
 

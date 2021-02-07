@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 
+export const SubTitlePage = styled.h2`
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.5px;
+`;
+
 export const ListGroup = styled.div`
   list-style: none;
   display: block;
@@ -18,11 +25,11 @@ export const ListItem = styled.div`
   align-content: stretch;
   max-width: 540px;
   margin: 0 1px 1px 0;
-  padding: 0;
-  background: #ededed;
+  padding: 14px 24px;
+  background: #f7cac9;
 
   &:hover {
-    background: #999;
+    background: #eea29a;
     cursor: pointer;
   }
 `;
@@ -35,17 +42,17 @@ export const AvatarWrapper = styled.img`
 `;
 
 export const TextWrapper = styled.span`
-  padding: 2px 16px;
+  padding: 0;
   margin: 0;
 `;
 
-export const NameStyle = styled.h2`
+export const NameStyle = styled.h3`
   font-family: Arial, Helvetica, sans-serif;
   font-size: 17px;
   font-weight: bold;
-  line-height: 18px;
+  line-height: 17px;
   letter-spacing: 0.5px;
-  margin: 0 0 5px;
+  margin: 0;
 `;
 
 export const EmailWrapper = styled.span`

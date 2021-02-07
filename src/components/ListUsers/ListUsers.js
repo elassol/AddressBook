@@ -3,42 +3,43 @@
 /* eslint-disable react/prop-types */
 
 import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getData, selectedUser } from '../../redux/actions';
+import { getData, getUser } from '../../redux/actions';
 import {
+  SubTitlePage,
   ListGroup,
   ListItem,
-  AvatarWrapper,
   TextWrapper,
   NameStyle,
-  EmailWrapper,
 } from './styles';
 
-const ListUsers = ({ getData, users }) => {
+const ListUsers = ({ getData, users, getUser }) => {
   useEffect(() => {
     getData();
-  }, [getData]);
+    getUser();
+  }, [getData, getUser]);
+
+  const history = useHistory();
 
   const selectUserList = (user) => {
     console.log('click');
     console.log(user);
-    selectedUser(user);
+    getUser(user);
+    history.push('/user');
   };
 
   return (
     <ListGroup>
-
+      <SubTitlePage>List Users</SubTitlePage>
       {users.map((user) => (
         <ListItem key={user.id} onClick={() => selectUserList(user)}>
-          <AvatarWrapper src={user.avatar} />
           <TextWrapper>
             <NameStyle>
               {user.first_name}
               {' '}
               {user.last_name}
             </NameStyle>
-            <EmailWrapper>{user.email}</EmailWrapper>
-
           </TextWrapper>
         </ListItem>
       ))}
@@ -48,11 +49,14 @@ const ListUsers = ({ getData, users }) => {
 };
 
 const mapStateToProps = (state) => (
-  { users: state.users }
+  { users: state.users, selectedUser: state.selectedUser }
 );
 
 const mapDispatchToProps = (dispatch) => (
-  { getData: () => dispatch(getData()) }
+  {
+    getData: () => dispatch(getData()),
+    getUser: (user) => dispatch(getUser(user)),
+  }
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListUsers);

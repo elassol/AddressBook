@@ -5,20 +5,22 @@ import {
 import { AppWrapper, TitleStyle } from './style';
 import ListUsers from '../ListUsers/ListUsers';
 import UserPage from '../UserPage/UserPage';
+import AddUserForm from '../AddUserForm/AddUserForm';
 
 const App = () => (
   <AppWrapper>
-    <TitleStyle>List Users</TitleStyle>
+    <TitleStyle>Contact List App</TitleStyle>
 
     <Router>
       <ul className="navbar-nav mr-auto">
         <li><Link to="/" className="nav-link"> Home </Link></li>
         <li><Link to="/user" className="nav-link">User</Link></li>
-        <li><Link to="/about" className="nav-link">About</Link></li>
+        <li><Link to="/add-user" className="nav-link">Add User</Link></li>
       </ul>
       <Switch>
         <Route exact path="/" component={ListUsers} />
         <Route path="/user" component={UserPage} />
+        <Route path="/add-user" component={AddUserForm} />
       </Switch>
     </Router>
   </AppWrapper>

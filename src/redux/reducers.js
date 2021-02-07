@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import {
-  DATA_REQUESTED, DATA_LOADED, API_ERRORED, SELECT_USER,
+  DATA_REQUESTED, DATA_LOADED, API_ERRORED, SELECT_USER, ADD_USER,
 } from './actions';
 
 const initialState = {
@@ -18,6 +18,8 @@ const rootReducer = (state = initialState, action) => {
   console.log('this is the reducers');
 
   switch (action.type) {
+    case ADD_USER:
+      return { ...state, users: state.users.concat(action.payload) };
     case SELECT_USER:
       return { ...state, selectedUser: action.payload };
     case DATA_REQUESTED:
