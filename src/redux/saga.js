@@ -1,7 +1,7 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
 // import axios from 'axios';
 import {
-  DATA_REQUESTED, DATA_LOADED, API_ERRORED, editUser, UPDATE_REQUEST,
+  DATA_REQUESTED, DATA_LOADED, API_ERRORED,
 } from './actions';
 
 async function getData() {
@@ -16,14 +16,6 @@ async function getData() {
   }
 }
 
-function updateUserAPI(id, data) {
-  return fetch(`https://reqres.in/api/users/${id}`, {
-    method: 'PUT',
-    body: JSON.stringify(data),
-  })
-    .then((res) => res.json());
-}
-
 function* workerSaga() {
   try {
     const payload = yield call(getData);
@@ -31,19 +23,6 @@ function* workerSaga() {
   } catch (error) {
     yield put({ type: API_ERRORED, payload: error });
   }
-}
-
-function* updateUser({ id, data }) {
-  try {
-    const newData = yield call(updateUserAPI, id, data);
-    yield put(editUser(id, newData));
-  } catch (error) {
-    yield put({ type: API_ERRORED, payload: error });
-  }
-}
-
-function* updateWatcher() {
-  yield takeEvery('UPDATE_REQUEST', updateUser);
 }
 
 export default function* watcherSaga() {
