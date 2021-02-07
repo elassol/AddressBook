@@ -7,14 +7,18 @@ import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getData, getUser } from '../../redux/actions';
 import {
+  WrapperHeaderPage,
   SubTitlePage,
   ListGroup,
   ListItem,
   TextWrapper,
   NameStyle,
+  OutLineButton,
 } from './styles';
 
-const ListUsers = ({ getData, users, getUser }) => {
+const ListUsers = ({
+  getData, users, getUser, loading, error,
+}) => {
   useEffect(() => {
     getData();
     getUser();
@@ -26,12 +30,18 @@ const ListUsers = ({ getData, users, getUser }) => {
     console.log('click');
     console.log(user);
     getUser(user);
-    history.push('/user');
+    history.push(`/user/${user.id}`);
   };
 
   return (
     <ListGroup>
-      <SubTitlePage>List Users</SubTitlePage>
+
+      <WrapperHeaderPage>
+        <SubTitlePage>User Page</SubTitlePage>
+        <OutLineButton onClick={() => history.push('/add-user')}>Add User</OutLineButton>
+      </WrapperHeaderPage>
+      {loading && 'loading component'}
+      {error && `Oops... ${error}`}
       {users.map((user) => (
         <ListItem key={user.id} onClick={() => selectUserList(user)}>
           <TextWrapper>
@@ -48,15 +58,16 @@ const ListUsers = ({ getData, users, getUser }) => {
   );
 };
 
-const mapStateToProps = (state) => (
-  { users: state.users, selectedUser: state.selectedUser }
-);
+const mapStateToProps = (state) => ({
+  users: state.users,
+  selectedUser: state.selectedUser,
+  loading: state.loading,
+  error: state.error,
+});
 
-const mapDispatchToProps = (dispatch) => (
-  {
-    getData: () => dispatch(getData()),
-    getUser: (user) => dispatch(getUser(user)),
-  }
-);
+const mapDispatchToProps = (dispatch) => ({
+  getData: () => dispatch(getData()),
+  getUser: (user) => dispatch(getUser(user)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListUsers);

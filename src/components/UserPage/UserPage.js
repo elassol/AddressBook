@@ -4,6 +4,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import {
+  WrapperHeaderPage,
   UserPageWrapper,
   SubTitlePage,
   CardView,
@@ -12,6 +13,7 @@ import {
   NameStyle,
   EmailWrapper,
   ButtonStyle,
+  OutLineButton,
 } from './styles';
 
 const UserPage = ({ user }) => {
@@ -20,7 +22,11 @@ const UserPage = ({ user }) => {
 
   return (
     <UserPageWrapper>
-      <SubTitlePage>User Page</SubTitlePage>
+
+      <WrapperHeaderPage>
+        <SubTitlePage>User Page</SubTitlePage>
+        <OutLineButton onClick={() => history.push('/')}>Deleted User</OutLineButton>
+      </WrapperHeaderPage>
 
       <CardView>
         <AvatarWrapper src={user.avatar} />

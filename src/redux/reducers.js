@@ -11,11 +11,11 @@ const initialState = {
 };
 
 const rootReducer = (state = initialState, action) => {
-  console.log('this is the reducers');
+  console.log('this is the START reducers');
   console.log(state);
   console.log(action.type);
   console.log(action.payload);
-  console.log('this is the reducers');
+  console.log('this is END of reducers');
 
   switch (action.type) {
     case ADD_USER:
@@ -25,7 +25,7 @@ const rootReducer = (state = initialState, action) => {
     case DATA_REQUESTED:
       return { ...state, error: null, loading: true };
     case DATA_LOADED:
-      return { ...state, users: action.payload };
+      return { ...state, users: action.payload, loading: false };
     case API_ERRORED:
       return {
         ...state, users: [], error: state.error, loading: false,

@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { addUser } from '../../redux/actions';
 
-const AddUserForm = ({ addUser }) => {
+const AddUserForm = ({ addUser, users }) => {
   console.log('add user');
   const [name, setName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -21,8 +21,9 @@ const AddUserForm = ({ addUser }) => {
   };
 
   const handleSubmit = (event) => {
+    const id = users.length + 1;
     event.preventDefault();
-    addUser({ first_name: name, last_name: lastName });
+    addUser({ first_name: name, last_name: lastName, id });
     setName('');
   };
 
@@ -62,7 +63,10 @@ const mapStateToProps = (state) => (
 );
 
 const mapDispatchToProps = (dispatch) => (
-  { addUser: (user) => dispatch(addUser(user)) }
+  {
+    addUser: (user) => dispatch(addUser(user)),
+  }
+
 );
 
 export default connect(mapStateToProps, mapDispatchToProps)(AddUserForm);

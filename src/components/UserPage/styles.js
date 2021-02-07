@@ -1,5 +1,13 @@
 import styled from 'styled-components';
 
+export const WrapperHeaderPage = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const UserPageWrapper = styled.div`
   display: block;
   max-width: 100%;
@@ -76,5 +84,18 @@ export const ButtonStyle = styled.a`
 
   &:hover {
     background-color: #92a8d1;
+  }
+`;
+
+export const OutLineButton = styled(ButtonStyle)`
+  font-size: 15px;
+  padding: 5px 11px;
+  background: transparent;
+  border: 2px solid #034f84;
+  color: #034f84;
+
+  &:hover {
+    background-color: #034f84;
+    color: #fff;
   }
 `;
