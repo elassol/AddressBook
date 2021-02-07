@@ -5,7 +5,7 @@ import {
 import { AppWrapper, TitleStyle } from './style';
 import ListUsers from '../ListUsers/ListUsers';
 import UserPage from '../UserPage/UserPage';
-import AddUserForm from '../AddUserForm/AddUserForm';
+import UserForm from '../UserForm/UserForm';
 
 const App = () => (
   <AppWrapper>
@@ -15,7 +15,7 @@ const App = () => (
       <Switch>
         <Route exact path="/" component={ListUsers} />
         <Route path="/user/:id" component={UserPage} />
-        <Route path="/add-user" component={AddUserForm} />
+        <Route path="/edit-user" component={UserForm} />
       </Switch>
     </Router>
   </AppWrapper>

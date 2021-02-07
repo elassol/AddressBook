@@ -1,7 +1,7 @@
 import { takeEvery, call, put } from 'redux-saga/effects';
 // import axios from 'axios';
 import {
-  DATA_REQUESTED, DATA_LOADED, API_ERRORED,
+  DATA_REQUESTED, DATA_LOADED, API_ERRORED, editUser, UPDATE_REQUEST,
 } from './actions';
 
 async function getData() {
@@ -16,21 +16,13 @@ async function getData() {
   }
 }
 
-// function deleteUserAPI(id) {
-//   return fetch(`https://reqres.in/api/users/${id}`, {
-//     method: 'DELETE',
-//   })
-//     .then((res) => res.json());
-// }
-
-// function* deleteUser({ id }) {
-//   try {
-//     const newData = yield call(deleteUserAPI, id);
-//     yield put(deleteSuccess(id));
-//   } catch (e) {
-//     throw new Error(`User error: ${e}`);
-//   }
-// }
+function updateUserAPI(id, data) {
+  return fetch(`https://reqres.in/api/users/${id}`, {
+    method: 'PUT',
+    body: JSON.stringify(data),
+  })
+    .then((res) => res.json());
+}
 
 function* workerSaga() {
   try {
@@ -41,9 +33,18 @@ function* workerSaga() {
   }
 }
 
-// function* updateWatcher() {
-//   takeEvery(DELETE_SUCCESS, deleteUser);
-// }
+function* updateUser({ id, data }) {
+  try {
+    const newData = yield call(updateUserAPI, id, data);
+    yield put(editUser(id, newData));
+  } catch (error) {
+    yield put({ type: API_ERRORED, payload: error });
+  }
+}
+
+function* updateWatcher() {
+  yield takeEvery('UPDATE_REQUEST', updateUser);
+}
 
 export default function* watcherSaga() {
   yield takeEvery(DATA_REQUESTED, workerSaga);

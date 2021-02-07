@@ -13,7 +13,6 @@ import {
   ListItem,
   TextWrapper,
   NameStyle,
-  OutLineButton,
 } from './styles';
 
 const ListUsers = ({
@@ -38,7 +37,6 @@ const ListUsers = ({
 
       <WrapperHeaderPage>
         <SubTitlePage>User Page</SubTitlePage>
-        <OutLineButton onClick={() => history.push('/add-user')}>Add User</OutLineButton>
       </WrapperHeaderPage>
       {loading && 'loading component'}
       {error && `Oops... ${error}`}

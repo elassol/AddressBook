@@ -25,7 +25,10 @@ const UserPage = ({ user }) => {
 
       <WrapperHeaderPage>
         <SubTitlePage>User Page</SubTitlePage>
-        <OutLineButton onClick={() => history.push('/')}>Deleted User</OutLineButton>
+        <span>
+          <OutLineButton onClick={() => history.push('/')}>Deleted User</OutLineButton>
+          <OutLineButton onClick={() => history.push('/edit-user')}>Edit User</OutLineButton>
+        </span>
       </WrapperHeaderPage>
 
       <CardView>

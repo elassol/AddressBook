@@ -1,6 +1,7 @@
+/* eslint-disable no-case-declarations */
 /* eslint-disable no-console */
 import {
-  DATA_REQUESTED, DATA_LOADED, API_ERRORED, SELECT_USER, ADD_USER,
+  DATA_REQUESTED, DATA_LOADED, API_ERRORED, SELECT_USER, EDIT_USER,
 } from './actions';
 
 const initialState = {
@@ -18,8 +19,12 @@ const rootReducer = (state = initialState, action) => {
   console.log('this is END of reducers');
 
   switch (action.type) {
-    case ADD_USER:
-      return { ...state, users: state.users.concat(action.payload) };
+    case EDIT_USER:
+      const newState = state.filter((user) => user.id === action.id);
+      return {
+        ...state,
+        users: state.users.concat(newState),
+      };
     case SELECT_USER:
       return { ...state, selectedUser: action.payload };
     case DATA_REQUESTED:
@@ -30,9 +35,6 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state, users: [], error: state.error, loading: false,
       };
-    // case DELETE_SUCCESS:
-    //   const newState = state.filter((user) => user.id !== action.id);
-    //   return newState;
     default:
       return state;
   }

@@ -88,10 +88,12 @@ export const ButtonStyle = styled.a`
 `;
 
 export const OutLineButton = styled(ButtonStyle)`
+  display: inline-block;
   font-size: 15px;
   padding: 5px 11px;
   background: transparent;
   border: 2px solid #034f84;
+  margin: 0 0 0 4px;
   color: #034f84;
 
   &:hover {
