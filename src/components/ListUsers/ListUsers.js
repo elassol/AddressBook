@@ -4,29 +4,39 @@
 
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getData } from '../../redux/actions';
+import { getData, selectUser } from '../../redux/actions';
 import {
   ListGroup,
   ListItem,
   AvatarWrapper,
   TextWrapper,
+  NameStyle,
+  EmailWrapper,
 } from './styles';
 
-const ListUsers = ({ getData }) => {
+const ListUsers = ({ getData, users }) => {
   useEffect(() => {
-    console.log('useEffect');
     getData();
   }, [getData]);
 
   return (
     <ListGroup>
-      <ListItem>
 
-        <AvatarWrapper>avatar</AvatarWrapper>
-        <TextWrapper>user.first_name</TextWrapper>
-        <TextWrapper>user.last_name</TextWrapper>
-        <TextWrapper>user.email</TextWrapper>
-      </ListItem>
+      {users.map((user) => (
+        <ListItem key={user.id} onClick={selectUser}>
+          <AvatarWrapper src={user.avatar} />
+          <TextWrapper>
+            <NameStyle>
+              {user.first_name}
+              {' '}
+              {user.last_name}
+            </NameStyle>
+            <EmailWrapper>{user.email}</EmailWrapper>
+
+          </TextWrapper>
+        </ListItem>
+      ))}
+
     </ListGroup>
   );
 };

@@ -1,10 +1,11 @@
 /* eslint-disable no-console */
 import {
-  DATA_REQUESTED, DATA_LOADED, API_ERRORED,
+  DATA_REQUESTED, DATA_LOADED, API_ERRORED, SELECT_USER,
 } from './actions';
 
 const initialState = {
   users: [],
+  selectedUser: {},
   error: null,
   loading: false,
 };
@@ -25,6 +26,8 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state, users: [], error: state.error, loading: false,
       };
+    case SELECT_USER:
+      return { ...state, selectedUser: action.payload };
     default:
       return state;
   }
