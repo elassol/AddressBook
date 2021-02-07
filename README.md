@@ -2,12 +2,12 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-
-https://medium.com/@lavitr01051977/make-your-first-call-to-api-using-redux-saga-15aa995df5b6
 ## Available Scripts
 
 In the project directory, you can run:
 
+yarn start
+yarn lint
 ### `yarn start`
 
 Runs the app in the development mode.\
