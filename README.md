@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# AddressBook App
+Create React App using React fetching data from API with Sagas, React Router, Styled Components
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). Use of rewired to extend Create React App without ejecting the app.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).\
+Use of `rewired` to extend Create React App without ejecting the app.
 ### `yarn start`
 
 Runs the app in the development mode.\
