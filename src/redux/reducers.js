@@ -30,6 +30,9 @@ const rootReducer = (state = initialState, action) => {
       return {
         ...state, users: [], error: state.error, loading: false,
       };
+    // case DELETE_SUCCESS:
+    //   const newState = state.filter((user) => user.id !== action.id);
+    //   return newState;
     default:
       return state;
   }
