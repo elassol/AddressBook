@@ -47,7 +47,7 @@ const UserPage = ({ user }) => {
   );
 };
 
-const mapStateToProps = (state) => (
+const mapStateToProps = state => (
   { user: state.selectedUser }
 );
 

@@ -22,8 +22,11 @@
     "prettier"
   ],
   "rules": {
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
-
+    "import/prefer-default-export": 0,
+    "import/no-extraneous-dependencies": 2,
+    "react/prefer-stateless-function": 0,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "arrow-parens": ["error", "as-needed"]
     // "indent": ["error", "tab"]
     //   "prettier/prettier": [
     //       "error",

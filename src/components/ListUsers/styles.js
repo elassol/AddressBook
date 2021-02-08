@@ -16,7 +16,7 @@ export const UserPageWrapper = styled.div`
 `;
 
 export const SubTitlePage = styled.h2`
-  font-family: Arial, Helvetica, sans-serif;
+  font-family:  ${props => props.theme.font.primary};
   font-size: 18px;
   line-height: 21px;
   letter-spacing: 0.5px;
@@ -41,10 +41,10 @@ export const ListItem = styled.div`
   max-width: 540px;
   margin: 0 1px 1px 0;
   padding: 14px 24px;
-  background: #f7cac9;
+  background:${props => props.theme.color.lightPink};
 
   &:hover {
-    background: #eea29a;
+    background: ${props => props.theme.color.darkerPink};
     cursor: pointer;
   }
 `;

@@ -20,7 +20,7 @@ const rootReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case EDIT_USER:
-      const newState = state.filter((user) => user.id === action.id);
+      const newState = state.filter(user => user.id === action.id);
       return {
         ...state,
         users: state.users.concat(newState),

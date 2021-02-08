@@ -31,12 +31,12 @@ export function deleteSuccess(id) {
   return { type: DELETE_SUCCESS, id };
 }
 
-export const receiveDataSuccess = (data) => ({
+export const receiveDataSuccess = data => ({
   type: DATA_LOADED,
   data,
 });
 
-export const receiveDataFailure = (error) => ({
+export const receiveDataFailure = error => ({
   type: API_ERRORED,
   error,
 });

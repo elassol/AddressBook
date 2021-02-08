@@ -25,7 +25,7 @@ const ListUsers = ({
 
   const history = useHistory();
 
-  const selectUserList = (user) => {
+  const selectUserList = user => {
     console.log('click');
     console.log(user);
     getUser(user);
@@ -40,7 +40,7 @@ const ListUsers = ({
       </WrapperHeaderPage>
       {loading && 'loading component'}
       {error && `Oops... ${error}`}
-      {users.map((user) => (
+      {users.map(user => (
         <ListItem key={user.id} onClick={() => selectUserList(user)}>
           <TextWrapper>
             <NameStyle>
@@ -56,16 +56,16 @@ const ListUsers = ({
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   users: state.users,
   selectedUser: state.selectedUser,
   loading: state.loading,
   error: state.error,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   getData: () => dispatch(getData()),
-  getUser: (user) => dispatch(getUser(user)),
+  getUser: user => dispatch(getUser(user)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListUsers);

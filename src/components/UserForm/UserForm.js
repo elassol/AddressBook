@@ -23,23 +23,23 @@ const AddUserForm = ({ editUser, users, selectedUser }) => {
   const [email, setEmail] = useState(selectedUser.email);
   const [avatar, setAvatar] = useState(selectedUser.avatar);
 
-  const handleChangeName = (event) => {
+  const handleChangeName = event => {
     setName(event.target.value);
   };
 
-  const handleChangeLastName = (event) => {
+  const handleChangeLastName = event => {
     setLastName(event.target.value);
   };
 
-  const handleChangeEmail = (event) => {
+  const handleChangeEmail = event => {
     setEmail(event.target.value);
   };
 
-  const handleChangeAvatar = (event) => {
+  const handleChangeAvatar = event => {
     setAvatar(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     const id = users.length + 1;
     event.preventDefault();
     editUser({
@@ -111,14 +111,14 @@ const AddUserForm = ({ editUser, users, selectedUser }) => {
   );
 };
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   users: state.users,
   selectedUser: state.selectedUser,
 });
 
-const mapDispatchToProps = (dispatch) => (
+const mapDispatchToProps = dispatch => (
   {
-    editUser: (user) => dispatch(editUser(user)),
+    editUser: user => dispatch(editUser(user)),
   }
 
 );
