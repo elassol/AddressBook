@@ -1,6 +1,7 @@
 export const color = {
-  lightPink: '#f7cac9',
-  darkerPink: '#cca7a6',
+  lightPink: '#fcedec',
+  pink: '#f7c9c7',
+  darkPink: '#380908',
   lightblue: '#35729d',
   Blue: '#034f84',
   darkBlue: '#022842',

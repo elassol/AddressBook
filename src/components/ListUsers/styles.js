@@ -20,6 +20,7 @@ export const SubTitlePage = styled.h2`
   font-size: 18px;
   line-height: 21px;
   letter-spacing: 0.5px;
+  color: ${props => props.theme.color.darkPink};
 `;
 
 export const ListGroup = styled.div`
@@ -41,11 +42,13 @@ export const ListItem = styled.div`
   max-width: 540px;
   margin: 0 1px 1px 0;
   padding: 14px 24px;
-  background:${props => props.theme.color.lightPink};
+  background-color:${props => props.theme.color.pink};
+  transition: background-color 400ms ease;
 
   &:hover {
-    background: ${props => props.theme.color.darkerPink};
     cursor: pointer;
+    background-color: ${props => props.theme.color.lightPink};
+    transition: background-color 400ms ease;
   }
 `;
 
@@ -68,6 +71,7 @@ export const NameStyle = styled.h3`
   line-height: 17px;
   letter-spacing: 0.5px;
   margin: 0;
+  color: ${props => props.theme.color.darkPink}
 `;
 
 export const EmailWrapper = styled.span`
